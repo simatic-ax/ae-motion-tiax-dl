@@ -19,7 +19,7 @@ installStrategy: strict
 apaxVersion: 3.4.2
 # Dependencies
 devDependencies:
-  "@ax/sdk": 2411.1.0
+  "@ax/sdk": 2411.2.0
 dependencies:
   "@ax/simatic-1500-motioncontrol-native-v8": 7.1.2
 
