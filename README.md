@@ -1,41 +1,62 @@
 # TIAX direct loading workflow
 
-## Getting started
-This example describes the different phases of the TIAX direct loading workflow using PLCSim. A positioning axis and a synchronous axis which are coupled via a master-slave configuration are used. To execute the application example, following steps are required:
+## About this example
+This example describes the different phases of the `TIAX direct loading` workflow using PlcSim Advanced. A positioning axis and a synchronous axis which are coupled via a master-slave configuration are used. To execute the application example, following steps are required:
 
 1. Prepare the hardware configuration and the technology objects in a TIA Portal project and download them to your target.
-2. Create a Motion application in AX and download it to your target beside the technological objects from the TIA project.
-3. Use the diagnostic tools in TIA Portal to verify the operation of your code.
 
-### Create a Motion Control project with TIA portal
+    > The TIAP project is not part of this application example. Please create it yourself.
 
-1. Open TIA portal and create a project
-2. Add a `SIMATIC S7-1500 T-CPU` - for instance a `CPU 1516T-3 PN/DP` with firmware version 3.0 or above.
-   For this example you can disable the option `Protect confidential PLC configuration data` in the following wizard and set the `Access level without password` to `Full access` at the last page.
-3. Add a technology object of the type `positioning axis` with version 8.0 and mark `Virtual axis` in the `Axis type` section. It should have the block number 2.
+2. Create a Motion application example in SIMATIC AX and download it to your target next to the technological objects, which are coming from the TIAP project download.
+
+    > This SIMATIC AX project is part of this application example. You can reuse it.
+
+3. Use the diagnostic tools from both the TIAP as well as SIMATIC AX to verify the operation of your application.
+
+## Create a Motion Control project with TIA Portal
+
+- Open TIA Portal and create a project
+-  Add a `SIMATIC S7-1500 T-CPU` - for instance a CPU 1516T-3 PN/DP with firmware version 3.0 or above.
+   For this example you can disable the option `Protect confidential PLC configuration data` in the creation wizard and set the `Access level without password` to `Full access`.
+-  Add a technology object of the type `Positioning Axis` with version `8.0` and mark the property `Virtual axis` in the `Axis type` section. It should have the block number 2 [DB02].
    ![Create a virtual positioning axis](./docs/tiax-direct-load_posaxis.png)
-4. Add a technology object of type `synchronous axis` with the same version and again, mark `Virtual axis` in the `Axis type` section. It should have the block number 3.  
-   Because we are using a gearing functionality you must assign a master axis in the `Hardware interface / Leading value interconnections` of the technology object `synchronous axis`. Enter your just created positioning axis in `Possible leading values` with the `Type of Connection` 'Setpoint'.
-5. Start a virtual PLC in TIA portal with Online | Simulation | Start.
-6. Download the project to the virtual PLC.
+-  Add a technology object of type `Synchronous Axis` with the same version and again, mark `Virtual axis` in the `Axis type` section. It should have the block number 3 [DB03].  
+   Because we are using a gearing functionality you must assign a master axis in the `Hardware interface / Leading value interconnections` property of the technology object `Synchronous Axis`. Choose the newly created positioning axis in `Possible leading values` with the `Type of Connection` 'Setpoint'.
+-  Start a PlcSim Advanced instance and activate the project support for compiling for simulated targets in TIA portal project settings.
+-  Compile and Download the project (Hardware and Software) to the PlcSim Adavanced instance.
 
-### Create a Motion Control Application in AX
+## Create a Motion Control application in SIMATIC AX
 
-1. Open a shell and navigate to a folder on your local hard disk where the application should be stored.
-2. Login to `Apax`. Details can be found [here](/docs/apax#quickstart).
-3. Create a new application with `Apax`, install dependencies and open the created application with AxCode:
+- Open a shell and navigate to a folder on your local hard disk where the application should be stored.
+- Login to using `Apax` to the product registry `@ax` with your credentials.
+   ```sh 
+   apax login
+   ```
+- Create a new application, install dependencies and open the created application with AxCode:
 
    ```sh
-   apax create app my-tiax-motion-app
-   cd my-tiax-motion-app
-   
+   apax create @simatic-ax/ae-motion-tiax-dl --registry https://npm.pkg.github.com my-new-motion-tiax-dl-project
+   ```
+   ```sh
+   cd my-new-motion-tiax-dl-project
+   apax install
+   axcode .
+   ```
+    > Note: This is the "out-of-the-box" solution. You can jump to [chapter-3](#Start-the-Motion-application-example-and-verify-the-operation) directly now.
+
+
+    If you want to start fresh and recreate the application by your self follow the next steps instead.
+
+   ```sh
+   apax create app my-new-motion-tiax-dl-project
+   ```
+   ```sh
+   cd my-new-motion-tiax-dl-project
    apax install
    axcode .
    ```
 
-4. Change the target in the file _apax.yml_ from '1500' to 'plcsim' and remove other targets.
-
-5. Open a terminal inside AX Code and add the reference to the Motion library:
+- Open a terminal inside AxCode and add the reference to the Motion library:
 
    ```sh
    apax add @ax/simatic-1500-motioncontrol-native-v8
@@ -43,8 +64,9 @@ This example describes the different phases of the TIAX direct loading workflow 
 
    > The library version you choose must fit to the library version of 'Motion Control' technology in your TIA-Portal project.
 
-6. Add the file `SampleAxisFB.st` below to the _src_-folder:
-    <details><summary>the file SampleAxisFB.st</summary>
+- Add a file with the name `SampleAxisFB.st` below to the `src`-folder:
+  
+    <details><summary>"SampleAxisFB.st" content</summary>
 
     ```iecst
     USING Siemens.Simatic.S71500.MotionControl.Native;
@@ -185,15 +207,15 @@ This example describes the different phases of the TIAX direct loading workflow 
 
     </details>
 
-7. Set the `Interval` in the file _configuration.st_ in the _src_-folder to 10ms and add the following two variables to the VAR_GLOBAL section:
+- Set the `Interval` of the Main-Task in the file `configuration.st` to `10ms` and add the following two variables to the `VAR_GLOBAL` section of the configuration.st file :
 
     ```iecst
     Execute     : BOOL;
     RequiredPos : LREAL;
     ```
 
-8. Edit the file _program.st_ below the _src_-folder to call the sample FB:
-    <details><summary>the file program.st</summary>
+- Edit the file `program.st` below the `src`-folder to call the sample FB:
+    <details><summary>"program.st" content</summary>
 
     ```iecst
     USING My.Tiax.MotionControl;
@@ -220,25 +242,39 @@ This example describes the different phases of the TIAX direct loading workflow 
 
     </details>
 
-    Notice, that if you are using other block numbers for the technological objects you need to adapt the numbers in the CONSTANT section.
+    Notice:  if you are using other block/DB-numbers for the technological objects you need to adapt the numbers in the CONSTANT section accordingly.
 
-9. Save all files, build the application and download it to PLCSim with the --non-overwriting option:
+- Save the project, build the application and download it to PLCSimAdv instance with the `--non-overwriting` option of the `sdl` (software-loader) tool :
 
     ```sh
     apax build
-    apax sld load --non-overwriting --mode:delta -i ./bin/plcsim -t 192.168.0.1 --restart --accept-security-disclaimer
+    ```
+    ```sh
+    apax sld load --non-overwriting --mode:delta -i ./bin/1500 -t 192.168.0.1 --restart --accept-security-disclaimer
     ```
 
-### Start the Motion application and verify the operation in TIA Portal
+## Start the Motion application example and verify the operation 
 
-1. Open the diagnostics windows of both axis side-by-side in the TIA project and start the monitoring of each axis (via the icon in the upper left corner of each window).
+  Note : In the TIAX directloading use-case both, TIA-Portal and SIMATIC AX can be online on the same target at the same time in order to do diagnostics and debugging.
+
+- In TIA-Portal : Open the diagnostics windows of both axis side-by-side and start monitoring (via the icon in the upper left corner of each window).
    ![Start the diagnostics in TIA Portal](./docs/tiax-direct-load_diagnostics.png)
 
-2. Set the required position and start the execution
+- In SIMATIC AX : Set the required position and start the execution of the application. Therefore use the `mod` tool with the following commands:
 
     ```sh
     apax mod -t 192.168.0.1 --symbol RequiredPos --value 1000.0
     apax mod -t 192.168.0.1 --symbol Execute     --value true
     ```
+    Optional: Create a watchtable in your root-directory with the name `watchlist.mon` and add the following variables:
 
-3. Watch how the positioning axis moves to position 1000.0 and the synchronous axis to 2000.0. Afterwards the velocity is reduced to 0.
+    ```txt
+    execute
+    requiredPos
+    motionFB.execState
+    motionFB.moveAbs
+    motionFB.gearOutPos
+    ```
+    Press the "go-online" button on the top right of the file to monitor the values.
+
+- In TIA-Portal : Watch how the positioning axis moves to position 1000.0 and the synchronous axis to 2000.0. Afterwards the velocity is reduced to 0.
