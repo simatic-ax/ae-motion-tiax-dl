@@ -4,7 +4,7 @@ version: 1.0.0
 author: Siemens AG
 type: app
 # Description for your application example or app
-description: This project contains a motion example for the direct download use case.
+description: This project contains a motion example for the tiax "direct-download" use case.
 #URL to the repository
 repository:
   type: git
@@ -12,7 +12,6 @@ repository:
 # Targets to be compiled with 'apax build'
 targets:
   - "1500"
-  - "llvm"
 
 # Install settings
 installStrategy: strict
