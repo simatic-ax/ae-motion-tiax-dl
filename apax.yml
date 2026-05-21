@@ -19,13 +19,13 @@ apaxVersion: 3.5.0
 
 # Catalogs
 catalogs:
-  "@ax/simatic-ax": 2510.10.0
+  "@ax/simatic-ax": 2510.11.0
 
 # Dependencies
 devDependencies:
-  "@ax/sdk": 2510.10.0
+  "@ax/sdk": 2510.11.0
 dependencies:
-  "@ax/simatic-1500-motioncontrol-native-v8": 9.0.1
+  "@ax/simatic-1500-motioncontrol-native-v8": 9.0.3
 
 # Project variables
 variables:
