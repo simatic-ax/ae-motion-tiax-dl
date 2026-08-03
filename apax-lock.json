@@ -32,14 +32,16 @@
       "dependencies": {
         "@ax/axunitst-library": "9.4.8",
         "@ax/axunitst-test-director": "9.4.8"
-      }
+      },
+      "deprecated": "This package version is no longer supported. It is your responsibility to use supported versions. For more information, visit https://docs.industrial-operations-x.siemens.cloud/access?ax%3ApackageName=%40ax%2Freleases&ft:topicTitle=Legal+conditions&ax%3Afilepath=index."
     },
     "@ax/axunitst-analyzer.stc-plugin": {
       "name": "@ax/axunitst-analyzer.stc-plugin",
       "version": "9.4.8",
       "integrity": "sha512-qLlj3WjGcmlDUf8a8ybfmv2u45x+sGhm+TzODEnxHwtW+Jyx+7QH5Z9eoL3Eiekg7CmTUyMjBgUuXoCa6Bc+Eg==",
       "resolved": "https://registry.simatic-ax.siemens.io/@ax/axunitst-analyzer.stc-plugin/-/axunitst-analyzer.stc-plugin-9.4.8.tgz",
-      "dependencies": {}
+      "dependencies": {},
+      "deprecated": "This package version is no longer supported. It is your responsibility to use supported versions. For more information, visit https://docs.industrial-operations-x.siemens.cloud/access?ax%3ApackageName=%40ax%2Freleases&ft:topicTitle=Legal+conditions&ax%3Afilepath=index."
     },
     "@ax/axunitst-library": {
       "name": "@ax/axunitst-library",
@@ -48,14 +50,16 @@
       "resolved": "https://registry.simatic-ax.siemens.io/@ax/axunitst-library/-/axunitst-library-9.4.8.tgz",
       "dependencies": {
         "@ax/system-strings": "^10.0.24"
-      }
+      },
+      "deprecated": "This package version is no longer supported. It is your responsibility to use supported versions. For more information, visit https://docs.industrial-operations-x.siemens.cloud/access?ax%3ApackageName=%40ax%2Freleases&ft:topicTitle=Legal+conditions&ax%3Afilepath=index."
     },
     "@ax/axunitst-ls-contrib": {
       "name": "@ax/axunitst-ls-contrib",
       "version": "9.4.8",
       "integrity": "sha512-J5VPGGJmiDjCGWcJWRo6YzDGG2MYX4nT2lbEZ/xZLzhg+PpT2aJow6pitho6tP4ms9ot5rjdHBMTG7Ds+aRJkg==",
       "resolved": "https://registry.simatic-ax.siemens.io/@ax/axunitst-ls-contrib/-/axunitst-ls-contrib-9.4.8.tgz",
-      "dependencies": {}
+      "dependencies": {},
+      "deprecated": "This package version is no longer supported. It is your responsibility to use supported versions. For more information, visit https://docs.industrial-operations-x.siemens.cloud/access?ax%3ApackageName=%40ax%2Freleases&ft:topicTitle=Legal+conditions&ax%3Afilepath=index."
     },
     "@ax/axunitst-test-director": {
       "name": "@ax/axunitst-test-director",
@@ -68,7 +72,8 @@
         "@ax/build-native": "^16.0.3",
         "@ax/axunitst-test-director-linux-x64": "9.4.8",
         "@ax/axunitst-test-director-win-x64": "9.4.8"
-      }
+      },
+      "deprecated": "This package version is no longer supported. It is your responsibility to use supported versions. For more information, visit https://docs.industrial-operations-x.siemens.cloud/access?ax%3ApackageName=%40ax%2Freleases&ft:topicTitle=Legal+conditions&ax%3Afilepath=index."
     },
     "@ax/axunitst-test-director-linux-x64": {
       "name": "@ax/axunitst-test-director-linux-x64",
@@ -81,7 +86,8 @@
       "cpu": [
         "x64"
       ],
-      "dependencies": {}
+      "dependencies": {},
+      "deprecated": "This package version is no longer supported. It is your responsibility to use supported versions. For more information, visit https://docs.industrial-operations-x.siemens.cloud/access?ax%3ApackageName=%40ax%2Freleases&ft:topicTitle=Legal+conditions&ax%3Afilepath=index."
     },
     "@ax/axunitst-test-director-win-x64": {
       "name": "@ax/axunitst-test-director-win-x64",
@@ -94,7 +100,8 @@
       "cpu": [
         "x64"
       ],
-      "dependencies": {}
+      "dependencies": {},
+      "deprecated": "This package version is no longer supported. It is your responsibility to use supported versions. For more information, visit https://docs.industrial-operations-x.siemens.cloud/access?ax%3ApackageName=%40ax%2Freleases&ft:topicTitle=Legal+conditions&ax%3Afilepath=index."
     },
     "@ax/build-native": {
       "name": "@ax/build-native",
@@ -413,7 +420,8 @@
         "@ax/target-mc7plus": "11.4.57",
         "@ax/trace": "3.3.1",
         "@ax/xlad-service": "1.1.0"
-      }
+      },
+      "deprecated": "This package version is no longer supported. It is your responsibility to use supported versions. For more information, visit https://docs.industrial-operations-x.siemens.cloud/access?ax%3ApackageName=%40ax%2Freleases&ft:topicTitle=Legal+conditions&ax%3Afilepath=index."
     },
     "@ax/simatic-1500-motioncontrol-native-docs": {
       "name": "@ax/simatic-1500-motioncontrol-native-docs",
@@ -719,6 +727,7 @@
       "integrity": "sha512-qMd6JkjyjfvW9ar2PGCc+4wi71I5zrXPrxSvDRKMO7lak9qzVPEbbwgFl/lkj4qesnnDFIg29WKSiq2YzGPI2w==",
       "resolved": "https://registry.simatic-ax.siemens.io/@ax/simatic-ax/-/simatic-ax-2510.12.0.tgz",
       "dependencies": {},
+      "deprecated": "This package version is no longer supported. It is your responsibility to use supported versions. For more information, visit https://docs.industrial-operations-x.siemens.cloud/access?ax%3ApackageName=%40ax%2Freleases&ft:topicTitle=Legal+conditions&ax%3Afilepath=index.",
       "catalogDependencies": {
         "@ax/apax-build": "2.2.60",
         "@ax/ax2tia": "12.2.8",
