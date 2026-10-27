@@ -1,0 +1,7 @@
+MakeConfiguration:
+  - Name: Debug
+    Type: app
+    Targets:
+      - s7
+    StCompiler:
+      Debug: true # Enable debug information for value debugging

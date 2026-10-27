@@ -9,9 +9,6 @@ description: This project contains a motion example for the tiax "direct-downloa
 repository:
   type: git
   url: https://github.com/simatic-ax/ae-motion-tiax-dl
-# Targets to be compiled with 'apax build'
-targets:
-  - "1500"
 
 # Install settings
 installStrategy: strict
@@ -19,19 +16,17 @@ apaxVersion: 3.5.0
 
 # Catalogs
 catalogs:
-  "@ax/simatic-ax": 2510.17.0
+  "@ax-as/s7-catalog": 2610.0.0
 
 # Dependencies
 devDependencies:
-  "@ax/sdk": 2510.17.0
+  "@ax-as/s7-sdk": 2610.0.0
 dependencies:
-  "@ax/simatic-1500-motioncontrol-native-v8": 9.0.3
+  "@ax-mc/s7-motioncontrol-v8-lib": ^11.0.27
 
 # Project variables
 variables:
-  APAX_BUILD_ARGS:
-    - --debug # Enable debug information for value debugging 
-  BINARIES_FOLDER: "./bin/1500" # set the input folder for the loader
+  BINARIES_FOLDER: "./out/Debug/s7" # set the input folder for the loader
   # IP address must match with the IP address of your target device
   # The IP address in the .vscode/launch.json must be equal  
   IP_ADDRESS: "192.168.0.1"
@@ -40,9 +35,9 @@ variables:
 scripts:
   # call 'apax load' to build and perform an full download the program to the target
   dlplc:
-    - apax build
+    - apax make
     - apax sld load --non-overwriting --mode:full -i $BINARIES_FOLDER -t $IP_ADDRESS --restart --accept-security-disclaimer
   # call 'apax load' to build and perform an delta download the program to the target
   deltaload:
-    - apax build
+    - apax make
     - apax sld load --non-overwriting --mode:delta -i $BINARIES_FOLDER -t $IP_ADDRESS --restart --accept-security-disclaimer
