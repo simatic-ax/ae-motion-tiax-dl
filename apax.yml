@@ -16,11 +16,11 @@ apaxVersion: 3.5.0
 
 # Catalogs
 catalogs:
-  "@ax-as/s7-catalog": 2610.0.0
+  "@ax-as/s7-catalog": 2610.1.0
 
 # Dependencies
 devDependencies:
-  "@ax-as/s7-sdk": 2610.0.0
+  "@ax-as/s7-sdk": 2610.1.0
 dependencies:
   "@ax-mc/s7-motioncontrol-v8-lib": ^11.0.27
 
